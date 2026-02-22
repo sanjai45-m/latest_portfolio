@@ -12,6 +12,7 @@ import aiImage from '../../assets/ai.png';
 import project1Image from '../../assets/project-1.png';
 import project2Image from '../../assets/project-2.jpg';
 import project3Image from '../../assets/project-3.jpeg';
+import toasterImage from '../../assets/toaster_common.png';
 
 // Android Icon Component
 const AndroidIcon = ({ size = 20 }: { size?: number }) => (
@@ -48,6 +49,19 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
 
           {/* Store Buttons - Top Right */}
           <div className="absolute top-4 right-4 z-20 flex gap-2">
+            {project.pubDevUrl && (
+              <motion.a
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                href={project.pubDevUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-2 bg-dark-900/80 backdrop-blur-md rounded-lg text-teal-400 hover:bg-teal-500 hover:text-white transition-all duration-300 border border-teal-500/30 hover:border-teal-500 shadow-lg"
+                title="View on pub.dev"
+              >
+                <PubDevIcon size={20} />
+              </motion.a>
+            )}
             {project.playStoreUrl && (
               <motion.a
                 whileHover={{ scale: 1.1 }}
@@ -158,9 +172,27 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
   );
 };
 
+// pub.dev Icon Component
+const PubDevIcon = ({ size = 18 }: { size?: number }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+  </svg>
+);
+
 export default function Projects() {
   const projects = [
 
+    {
+      title: 'toaster_common — Flutter Package',
+      description: 'Published an open-source Flutter package on pub.dev: a lightweight, customizable animated overlay toast with smooth scale & fade transitions. Supports top/bottom positioning, asset & network images, auto-dismiss, and fully custom widgets. Achieved 140 pub points and 102+ downloads.',
+      image: toasterImage,
+      technologies: ['Flutter', 'Dart', 'pub.dev', 'Open Source', 'Animation', 'Overlay'],
+      githubUrl: 'https://github.com/sanjai45-m/toaster_common',
+      liveUrl: 'https://pub.dev/packages/toaster_common',
+      playStoreUrl: undefined,
+      appStoreUrl: undefined,
+      pubDevUrl: 'https://pub.dev/packages/toaster_common',
+    },
     {
       title: 'ATTI Cafe',
       description: 'Developed a Flutter-based food ordering application supporting dine-in and takeaway workflows',
