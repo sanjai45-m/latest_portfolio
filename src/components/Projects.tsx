@@ -2,6 +2,7 @@ import { Github, ExternalLink, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Reveal } from './Reveal';
 import { useState } from 'react';
+import { ToasterPreview } from './ToasterPreview';
 
 // Direct image imports for proper bundling
 import attiImage from '../../assets/atti.jpg';
@@ -38,14 +39,21 @@ const ProjectCard = ({ project, index }: { project: any; index: number }) => {
     <Reveal key={project.title} delay={index * 0.2}>
       <div className="group rounded-2xl overflow-hidden bg-dark-800 border border-white/10 hover:border-primary-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary-500/10 flex flex-col h-full">
         <div className="relative h-56 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent opacity-60 z-10"></div>
-          <motion.img
-            whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.5 }}
-            src={project.image}
-            alt={`${project.title} - ${project.technologies.slice(0, 3).join(', ')} project by Sanjai M`}
-            className="w-full h-full object-cover"
-          />
+          {!project.pubDevUrl && (
+            <div className="absolute inset-0 bg-gradient-to-t from-dark-900 to-transparent opacity-60 z-10" />
+          )}
+
+          {project.pubDevUrl ? (
+            <ToasterPreview />
+          ) : (
+            <motion.img
+              whileHover={{ scale: project.containImage ? 1.03 : 1.1 }}
+              transition={{ duration: 0.5 }}
+              src={project.image}
+              alt={`${project.title} - ${project.technologies.slice(0, 3).join(', ')} project by Sanjai M`}
+              className={`w-full h-full ${project.containImage ? 'object-contain p-2' : 'object-cover'}`}
+            />
+          )}
 
           {/* Store Buttons - Top Right */}
           <div className="absolute top-4 right-4 z-20 flex gap-2">
@@ -192,6 +200,7 @@ export default function Projects() {
       playStoreUrl: undefined,
       appStoreUrl: undefined,
       pubDevUrl: 'https://pub.dev/packages/toaster_common',
+      containImage: true,
     },
     {
       title: 'ATTI Cafe',
