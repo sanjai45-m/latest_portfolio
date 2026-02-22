@@ -1,0 +1,14 @@
+# robots.txt for Sanjai M Portfolio
+# https://sanjai-cv.netlify.app/robots.txt
+
+# Allow all search engines to crawl the entire site
+User-agent: *
+Allow: /
+
+# Disallow crawling of build artifacts and configuration files
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /dist/
+
+# Sitemap location
+Sitemap: https://sanjai-cv.netlify.app/sitemap.xml
