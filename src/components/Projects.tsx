@@ -184,7 +184,7 @@ export default function Projects() {
 
     {
       title: 'toaster_common — Flutter Package',
-      description: 'Published an open-source Flutter package on pub.dev: a lightweight, customizable animated overlay toast with smooth scale & fade transitions. Supports top/bottom positioning, asset & network images, auto-dismiss, and fully custom widgets. Achieved 140 pub points and 102+ downloads.',
+      description: '🚀 Published on pub.dev because most Flutter toast packages don\'t support images — toaster_common uniquely supports both Network & Asset images inside toasts. Lightweight overlay toast with smooth scale & fade animations, top/bottom positioning, auto-dismiss, and fully custom widgets. 140 pub points • 102+ downloads.',
       image: toasterImage,
       technologies: ['Flutter', 'Dart', 'pub.dev', 'Open Source', 'Animation', 'Overlay'],
       githubUrl: 'https://github.com/sanjai45-m/toaster_common',
